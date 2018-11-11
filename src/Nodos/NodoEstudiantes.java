@@ -5,13 +5,15 @@
  */
 package Nodos;
 
+import Control.Estudiantes;
+
 /**
  *
  * @author carlosmartinez
  */
 public class NodoEstudiantes {
-    int dato;
-    NodoEstudiantes siguiente;
-    NodoEstudiantes anterior;
+    public Estudiantes dato;
+    public NodoEstudiantes siguiente;
+    public NodoEstudiantes anterior;
     
 }
