@@ -58,7 +58,7 @@ public class ListaCircularDoble {
     }
     
     //LA FUNCION MOSTRAR DESPLOEGO LOS ESTUDIANTES ALMACENADOS
-    public void Mostrar(){
+    public void MostrarEstudiantes(){
         //SE CREA EL NUEVO NODO AUXILIAR
         NodoEstudiantes actual = new NodoEstudiantes();
         //EL NODO ACTUAL APUNTA AL PRIMERO DE LA LISTA

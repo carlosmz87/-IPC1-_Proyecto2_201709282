@@ -6,6 +6,7 @@
 package Control;
 
 import Estructuras.ListaCircularDoble;
+import Estructuras.ListaCircularSimple;
 
 /**
  *
@@ -13,9 +14,11 @@ import Estructuras.ListaCircularDoble;
  */
 public class Driver {
     public static ListaCircularDoble ListaEstudiantes;
+    public static ListaCircularSimple ListaCursos;
     public static Estudiantes [] estudiante;
+    public static Cursos [] curso;
     public static void main(String [] args){
-        CargarEstudiantes c1 = new CargarEstudiantes();
+        /*CargarEstudiantes c1 = new CargarEstudiantes();
         estudiante=c1.CargaEstudiantes();
         ListaEstudiantes = new ListaCircularDoble();
         for(int i=0; i<estudiante.length; i++){
@@ -30,11 +33,27 @@ public class Driver {
         ListaEstudiantes.Mostrar();
         ListaEstudiantes.BuscarEstudiante(12);
         ListaEstudiantes.ModificarEstudiante(12);
-        ListaEstudiantes.Mostrar();
+        ListaEstudiantes.MostrarEstudiantes();
         ListaEstudiantes.EliminarEstudiantes(12);
-        ListaEstudiantes.Mostrar();
+        ListaEstudiantes.Mostrar();*/
         
-    
+        ListaCursos = new ListaCircularSimple();
+        
+        CargarCursos c2 = new CargarCursos();
+        curso=c2.CargaCursos();
+        
+        for(int i=0; i<curso.length; i++){
+            ListaCursos.IngresarCurso(curso[i]);
+        }
+        int[] pre={2,3,4};
+        Cursos curso1 = new Cursos(2,2,2,false,'b',pre,5,true);
+        ListaCursos.IngresarCurso(curso1);
+        ListaCursos.MostrarCursos();
+        ListaCursos.BuscarCurso(3);
+        ListaCursos.ModificarCurso(2);
+        ListaCursos.MostrarCursos();
+        ListaCursos.EliminarCursos(2);
+        ListaCursos.MostrarCursos();
     
     }
     
