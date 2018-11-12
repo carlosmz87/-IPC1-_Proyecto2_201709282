@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author carlosmartinez
@@ -51,8 +53,18 @@ public class Login extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ADMINISTRADOR", "ESTUDIANTE", "CATEDRATICO" }));
 
         jButton1.setText("CANCELAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("ACEPTAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,6 +114,63 @@ public class Login extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MenuPrincipal().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int seleccionado = jComboBox1.getSelectedIndex();
+        String user = new String(jTextField1.getText());
+        String passw = new String(jTextField2.getText());
+        
+        
+        //ADMINISTRADOR
+        if(seleccionado == 0){
+           String admin = "1234";
+           String adminPw = "1234";
+            
+                try{
+                     if((admin.equals(user)) && (adminPw.equals(passw))){
+                         dispose();
+                          java.awt.EventQueue.invokeLater(new Runnable() {
+                              public void run() {
+                                  new Administrador().setVisible(true);
+                          }
+                          });
+                     }
+                     else{
+                         JOptionPane.showMessageDialog(null, "HAS INGRESADO UN USUARIO O CONTRASENA INCORRECTO");
+                         jTextField1.setText("");
+                         jTextField2.setText("");
+                         
+                     }
+                }
+                catch(NullPointerException e){
+                    JOptionPane.showMessageDialog(null, "HAS DEJADO CASILLAS EN BLANCO");
+                }
+                catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "HAS INGRESADO UN CARACTER INVALIDO");
+                }
+             
+        
+        }
+        //ESTUDIANTE
+        if(seleccionado == 1){
+        
+        }
+        //CATEDRATICO
+        if(seleccionado == 2){
+        
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

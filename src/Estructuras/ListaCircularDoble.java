@@ -76,7 +76,7 @@ public class ListaCircularDoble {
     }
     
     //LA FUNCION BUSCAR ESTUDIANTE, RECORRE LA LISTA Y BUSCA COINCIDENIA EN EL CARNET DEL ESTUDIANTE
-    public void BuscarEstudiante(int c){
+    public boolean BuscarEstudiante(int c){
         //CREAMOS UN NODO AUXILIAR PARA RECORRER LA LISTA
         NodoEstudiantes actual = new NodoEstudiantes();
         //EL NODO AUXILIAR SE UBICA DE ULTIMO EN LA LISTA
@@ -105,10 +105,12 @@ public class ListaCircularDoble {
         
         if(encontrado==true){
             System.out.println("ESTUDIANTE ENCONTRADO");
+            return encontrado;
             
         }
         else{
             System.out.println("ESTUDIANTE NO ENCONTRADO");
+            return encontrado;
            
         }
         

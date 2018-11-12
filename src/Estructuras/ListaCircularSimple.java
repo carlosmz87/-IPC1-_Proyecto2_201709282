@@ -46,7 +46,7 @@ public class ListaCircularSimple {
         while(actual != primero);
     }
     
-    public void BuscarCurso(int x){
+    public boolean BuscarCurso(int x){
         NodoCursos actual = new NodoCursos();
         actual = primero;
         boolean encontrado = false;
@@ -68,9 +68,11 @@ public class ListaCircularSimple {
         while(actual != primero);
         if(encontrado == true){
             System.out.println("EL CURSO FUE ENCONTRADO");
+            return encontrado;
         }
         else{
             System.out.println("EL CURSO NO FUE ENCONTRADO");
+            return encontrado;
         }
     }
     

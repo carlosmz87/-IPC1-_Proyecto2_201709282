@@ -46,7 +46,7 @@ public class ListaSimple {
         }
     }
     
-    public void BuscarCatedratico(int c){
+    public boolean BuscarCatedratico(int c){
         NodoCatedraticos actual = new NodoCatedraticos();
         actual = primero;
         boolean encontrado = false;
@@ -59,9 +59,11 @@ public class ListaSimple {
         }
         if(encontrado == true){
             System.out.println("EL CATEDRATICO FUE ENCONTRADO");
+            return encontrado;
         }
         else{
             System.out.println("EL CATEDRATICO NO FUE ENCONTRADO");
+            return encontrado;
         }
         
     }
