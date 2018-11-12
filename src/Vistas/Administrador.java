@@ -5,6 +5,12 @@
  */
 package Vistas;
 
+import Control.Cursos;
+import Control.Estudiantes;
+import Estructuras.ListaCircularDoble;
+import Estructuras.ListaCircularSimple;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author carlosmartinez
@@ -78,20 +84,60 @@ public class Administrador extends javax.swing.JFrame {
         setTitle("MENU DEL ADMINISTRADOR");
 
         jButton1.setText("AGREGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("MODIFICAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("ELIMINAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("VISUALIZAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("AGREGAR");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("MODIFICAR");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("ELIMINAR");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("VISUALIZAR");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("ESTUDIANTES");
 
@@ -111,11 +157,19 @@ public class Administrador extends javax.swing.JFrame {
 
         jLabel9.setText("CONTRASENA");
 
+        jTextField7.setEditable(false);
+
         jLabel10.setText("NO. CURSO");
 
         jLabel11.setText("CARNET CATEDRATICO");
 
         jLabel12.setText("CREDITOS");
+
+        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField10ActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("LABORATORIO");
 
@@ -320,6 +374,175 @@ public class Administrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int carne, dpi, creditos, contrasena, pw;
+        String nombre, correo, direccion;
+        String user = new String(jTextField1.getText());
+        carne = Integer.parseInt(user);
+        String cedula = new String(jTextField2.getText());
+        dpi = Integer.parseInt(cedula);
+        nombre = new String(jTextField3.getText());
+        correo = new String(jTextField4.getText());
+        direccion = new String(jTextField5.getText());
+        String cre = new String(jTextField6.getText());
+        creditos = Integer.parseInt(cre);
+        contrasena = (int)(Math.floor(Math.random()*999));
+        String passw = user+String.valueOf(contrasena);
+        pw = Integer.parseInt(passw);
+        jTextField7.setText(passw);
+        
+        if(ListaEstudiantes.BuscarEstudiante(carne)==false){
+            Estudiantes e1 = new Estudiantes(carne, dpi, creditos, pw, nombre, correo, direccion);
+            ListaEstudiantes.IngresarEstudiante(e1);
+            JOptionPane.showMessageDialog(null, "EL ESTUDIANTE HA SIDO INGRESADO");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "EL ESTUDIANTE CON EL CARNET" + carne + "YA EXISTE");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String correo, direccion, credits, user;
+        int creditos, carne;
+        user = new String(jTextField1.getText());
+        carne = Integer.parseInt(user);
+        correo = new String(jTextField4.getText());
+        direccion = new String(jTextField5.getText());
+        credits = new String(jTextField6.getText());
+        creditos = Integer.parseInt(credits);
+        if(ListaEstudiantes.BuscarEstudiante(carne)==true){
+            ListaEstudiantes.ModificarEstudiante(carne, correo, direccion, creditos);
+            JOptionPane.showMessageDialog(null, "EL ESTUDIANTE HA SIDO MODIFICADO");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "EL ESTUDIANTE CON EL CARNET" + carne + "NO SE ENCUENTRA");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String user = new String(jTextField1.getText());
+        int carne = Integer.parseInt(user);
+        if(ListaEstudiantes.BuscarEstudiante(carne)==true){
+            ListaEstudiantes.EliminarEstudiantes(carne);
+            JOptionPane.showMessageDialog(null, "EL ESTUDIANTE HA SIDO ELIMINADO");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "EL ESTUDIANTE CON EL CARNET" + carne + "NO SE ENCUENTRA");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        String cur, cat, cred, sec, pr1, pr2, pr3, po;
+        boolean lab, estado;
+        cur = new String(jTextField8.getText());
+        cat = new String(jTextField9.getText());
+        cred = new String(jTextField10.getText());
+        lab = jCheckBox1.isSelected();
+        sec = new String(jTextField15.getText());
+        pr1 = new String(jTextField11.getText());
+        pr2 = new String(jTextField12.getText());
+        pr3 = new String(jTextField13.getText());
+        po = new String(jTextField14.getText());
+        estado = jCheckBox2.isSelected();
+        
+        int curso, catedraticos, creditos, preq1, preq2, preq3, post;
+        int [] pre = new int[3];
+        char seccion;
+        curso = Integer.parseInt(cur);
+        catedraticos = Integer.parseInt(cat);
+        creditos = Integer.parseInt(cred);
+        seccion = sec.charAt(0);
+        preq1 = Integer.parseInt(pr1);
+        preq2 = Integer.parseInt(pr2);
+        preq3 = Integer.parseInt(pr3);
+        pre[0] = preq1;
+        pre[1] = preq2;
+        pre[2] = preq3;
+        post = Integer.parseInt(po);
+        
+        if(ListaCursos.BuscarCurso(curso)==false){
+            Cursos c1 = new Cursos(curso, catedraticos, creditos, lab, seccion, pre, post, estado);
+            ListaCursos.IngresarCurso(c1);
+            JOptionPane.showMessageDialog(null, "EL CURSO HA SIDO INGRESADO ");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "EL CURSO CON EL NO. "+ curso + "YA EXISTE");
+        }
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+         String cur, cat, cred, sec, pr1, pr2, pr3, po;
+        boolean lab, estado;
+        cur = new String(jTextField8.getText());
+        cat = new String(jTextField9.getText());
+        cred = new String(jTextField10.getText());
+        lab = jCheckBox1.isSelected();
+        sec = new String(jTextField11.getText());
+        pr1 = new String(jTextField12.getText());
+        pr2 = new String(jTextField13.getText());
+        pr3 = new String(jTextField14.getText());
+        po = new String(jTextField15.getText());
+        estado = jCheckBox2.isSelected();
+        
+        int curso, catedraticos, creditos, preq1, preq2, preq3, post;
+        int [] pre = new int[3];
+        char seccion;
+        curso = Integer.parseInt(cur);
+        catedraticos = Integer.parseInt(cat);
+        creditos = Integer.parseInt(cred);
+        seccion = sec.charAt(0);
+        preq1 = Integer.parseInt(pr1);
+        preq2 = Integer.parseInt(pr2);
+        preq3 = Integer.parseInt(pr3);
+        pre[0] = preq1;
+        pre[1] = preq2;
+        pre[2] = preq3;
+        post = Integer.parseInt(po);
+        
+        if(ListaCursos.BuscarCurso(curso)==true){
+            ListaCursos.ModificarCurso(curso, catedraticos, creditos, lab, seccion, pre, post, estado);
+            JOptionPane.showMessageDialog(null, " EL CURSO HA SIDO MODIFICADO ");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, " EL CURSO CON EL NO. "+ curso + "NO EXISTE ");
+        }
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        String cur = new String(jTextField8.getText());
+        int curso = Integer.parseInt(cur);
+        if(ListaCursos.BuscarCurso(curso)==true){
+            ListaCursos.EliminarCursos(curso);
+            JOptionPane.showMessageDialog(null, "EL CURSO HA SIDO ELIMINADO");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "EL CURSO CON EL NO. " + curso + "NO SE ENCUENTRA");
+        }
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        ListaEstudiantes.MostrarEstudiantes();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        ListaCursos.MostrarCursos();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,5 +596,6 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
-
+    private ListaCircularDoble ListaEstudiantes = MenuPrincipal.ListaEstudiantes;
+    private ListaCircularSimple ListaCursos = MenuPrincipal.ListaCursos;
 }

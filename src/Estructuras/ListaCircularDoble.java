@@ -118,7 +118,7 @@ public class ListaCircularDoble {
     
     //LA FUNCION MODIFICARESTUDIANTE FUNCIONA DE LA MISMA MANERA QUE LA FUNCION BUSCAR
     //AL ENCONTRAR COINCIDENCIA DE LOS CARNETS UNICAMENTE MODIFICA SUS DATOS COMO EL CORREO, DIRECCION Y LOS CREDITOS
-    public void ModificarEstudiante(int c){
+    public void ModificarEstudiante(int c, String mail, String adress, int credits){
         NodoEstudiantes actual = new NodoEstudiantes();
         actual=ultimo;
         boolean encontrado = false;
@@ -126,11 +126,11 @@ public class ListaCircularDoble {
             try{
                 if(actual.dato.getCarne()==c){
                     encontrado = true;
-                    String correo = "MODIFICADO";
+                    String correo = mail;
                     actual.dato.setCorreo(correo);
-                    String direccion = "MODIFICADO";
+                    String direccion = adress;
                     actual.dato.setDireccion(direccion);
-                    int creditos = 0;
+                    int creditos = credits;
                     actual.dato.setCreditos(creditos);
                     System.out.println("DATOS DEL ESTUDIANTE MODIFICADOS");
                     

@@ -77,7 +77,7 @@ public class ListaCircularSimple {
     }
     
     
-    public void ModificarCurso(int c){
+    public void ModificarCurso(int c, int cat, int cred, boolean laboratorio, char sec, int [] pr, int po, boolean est){
         NodoCursos actual = new NodoCursos();
         actual=ultimo;
         boolean encontrado = false;
@@ -85,33 +85,20 @@ public class ListaCircularSimple {
             try{
                 if(actual.dato.getCurso()==c){
                     encontrado = true;
-                    int catedratico = 0;
+                    int catedratico = cat;
                     actual.dato.setCatedraticos(catedratico);
-                    int creditos = 0;
+                    int creditos = cred;
                     actual.dato.setCreditos(creditos);
-                    boolean lab = actual.dato.isLab();
-                    if(lab==true){
-                        actual.dato.setLab(false);
-                    }
-                    else{
-                        actual.dato.setLab(true);
-                    }
-                    char seccion = ' ';
+                    boolean lab = laboratorio;
+                    actual.dato.setLab(lab);
+                    char seccion = sec;
                     actual.dato.setSeccion(seccion);
-                    
-                    int [] pre = {0, 0, 0};
+                    int [] pre = pr;
                     actual.dato.setPre(pre);
-                    
-                    int post = 0;
+                    int post = po;
                     actual.dato.setPost(0);
-                    
-                    boolean estado = actual.dato.isEstado();
-                    if(estado==true){
-                        actual.dato.setEstado(false);
-                    }
-                    else{
-                        actual.dato.setEstado(true);
-                    }
+                    boolean estado = est;
+                    actual.dato.setEstado(estado);
                     System.out.println("DATOS DEL CURSO MODIFICADOS");
                     
                 }
