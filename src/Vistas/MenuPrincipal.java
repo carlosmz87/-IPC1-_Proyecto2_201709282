@@ -25,6 +25,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
+        ListaCursos = new ListaCircularSimple();
+        ListaEstudiantes = new ListaCircularDoble();
+        ListaCatedraticos = new ListaSimple();
         initComponents();
     }
 
@@ -118,7 +121,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         CargarEstudiantes c1 = new CargarEstudiantes();
         estudiante=c1.CargaEstudiantes();
-        ListaEstudiantes = new ListaCircularDoble();
+        
         for(int i=0; i<estudiante.length; i++){
             ListaEstudiantes.IngresarEstudiante(estudiante[i]);
         }
@@ -129,7 +132,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ListaCursos = new ListaCircularSimple();
+        
         
         CargarCursos c2 = new CargarCursos();
         curso=c2.CargaCursos();
@@ -142,7 +145,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        ListaCatedraticos = new ListaSimple();
+        
         CargarCatedraticos c3 = new CargarCatedraticos();
         catedratico = c3.CargaCatedraticos();
         for(int i=0; i<catedratico.length; i++){
@@ -166,9 +169,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
    
-    public static ListaCircularDoble ListaEstudiantes;
-    public static ListaCircularSimple ListaCursos;
-    public static ListaSimple ListaCatedraticos;
+    public static  ListaCircularDoble ListaEstudiantes;
+    public static  ListaCircularSimple ListaCursos;
+    public static  ListaSimple ListaCatedraticos;
     public static Estudiantes [] estudiante;
     public static Cursos [] curso;
     public static Catedraticos [] catedratico;

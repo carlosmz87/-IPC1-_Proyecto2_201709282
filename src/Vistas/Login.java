@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import Estructuras.ListaCircularDoble;
+
+import Estructuras.ListaSimple;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +15,20 @@ import javax.swing.JOptionPane;
  * @author carlosmartinez
  */
 public class Login extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Login
      */
+    public static ListaCircularDoble ListaEstudiantes;
+    public static ListaSimple ListaCatedraticos;
     public Login() {
+        if(ListaEstudiantes==null){
+            ListaEstudiantes = MenuPrincipal.ListaEstudiantes;
+        }
+        else{
+            ListaEstudiantes = Administrador.ListaEstudiantes;
+        }
+        ListaCatedraticos = MenuPrincipal.ListaCatedraticos;
         initComponents();
     }
 
@@ -127,49 +139,59 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int seleccionado = jComboBox1.getSelectedIndex();
-        String user = new String(jTextField1.getText());
-        String passw = new String(jTextField2.getText());
-        
-        
-        //ADMINISTRADOR
-        if(seleccionado == 0){
-           String admin = "1234";
-           String adminPw = "1234";
             
-                try{
-                     if((admin.equals(user)) && (adminPw.equals(passw))){
-                         dispose();
-                          java.awt.EventQueue.invokeLater(new Runnable() {
-                              public void run() {
-                                  new Administrador().setVisible(true);
-                          }
-                          });
-                     }
-                     else{
-                         JOptionPane.showMessageDialog(null, "HAS INGRESADO UN USUARIO O CONTRASENA INCORRECTO");
-                         jTextField1.setText("");
-                         jTextField2.setText("");
-                         
-                     }
-                }
-                catch(NullPointerException e){
-                    JOptionPane.showMessageDialog(null, "HAS DEJADO CASILLAS EN BLANCO");
-                }
-                catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "HAS INGRESADO UN CARACTER INVALIDO");
-                }
+        try{
+            seleccionado = jComboBox1.getSelectedIndex();
+            user = new String(jTextField1.getText());
+            passw = new String(jTextField2.getText());
+            usuario = Integer.parseInt(user);
+            contrasena = Integer.parseInt(passw);
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "DEBES LLENAR LAS CASILLAS");
+        }
+            //ADMINISTRADOR
+
+            String admin = "1234";
+            String adminPw = "1234";
+            if((admin.equals(user)) && (adminPw.equals(passw) && (seleccionado == 0))){
+                dispose();
+                 java.awt.EventQueue.invokeLater(new Runnable() {
+                     public void run() {
+                         new Administrador().setVisible(true);
+                 }
+                 });
+            }
+            
+        
+       
+            //ESTUDIANTE
+        
+            else if((ListaEstudiantes.LogearEstudiante(usuario, contrasena))&&(seleccionado == 1)){
+                dispose();
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new MenuEstudiantes().setVisible(true);
+                    }
+                });
+            }
+            
+            
+            //CATEDRATICO
+            else if(ListaCatedraticos.LogearCatedratico(usuario, contrasena)&&(seleccionado == 2)){
+                dispose();
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new MenuCatedraticos().setVisible(true);
+                    }
+                });
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "HAS INGRESADO MAL UN DATO");
+            
+            }
+       
              
-        
-        }
-        //ESTUDIANTE
-        if(seleccionado == 1){
-        
-        }
-        //CATEDRATICO
-        if(seleccionado == 2){
-        
-        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -184,4 +206,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+    
+    int seleccionado, usuario, contrasena;
+    String user, passw;
 }

@@ -21,9 +21,28 @@ public class Administrador extends javax.swing.JFrame {
      * Creates new form Administrador
      */
     public Administrador() {
+        ListaEstudiantes = MenuPrincipal.ListaEstudiantes;
+        ListaCursos = MenuPrincipal.ListaCursos;
         initComponents();
     }
-
+    
+    public void Limpiar(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        jTextField9.setText("");
+        jTextField10.setText("");
+        jTextField11.setText("");
+        jTextField12.setText("");
+        jTextField13.setText("");
+        jTextField14.setText("");
+        jTextField15.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,6 +98,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jCheckBox2 = new javax.swing.JCheckBox();
         jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU DEL ADMINISTRADOR");
@@ -191,6 +211,13 @@ public class Administrador extends javax.swing.JFrame {
 
         jButton9.setText("REPORTES");
 
+        jButton10.setText("VOLVER AL LOGIN");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -252,10 +279,8 @@ public class Administrador extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jCheckBox1)
@@ -264,8 +289,14 @@ public class Administrador extends javax.swing.JFrame {
                                 .addGap(66, 66, 66)
                                 .addComponent(jCheckBox2))
                             .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(106, Short.MAX_VALUE))
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(61, 61, 61)
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,13 +373,18 @@ public class Administrador extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -368,7 +404,7 @@ public class Administrador extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -391,14 +427,20 @@ public class Administrador extends javax.swing.JFrame {
         String passw = user+String.valueOf(contrasena);
         pw = Integer.parseInt(passw);
         jTextField7.setText(passw);
-        
-        if(ListaEstudiantes.BuscarEstudiante(carne)==false){
-            Estudiantes e1 = new Estudiantes(carne, dpi, creditos, pw, nombre, correo, direccion);
-            ListaEstudiantes.IngresarEstudiante(e1);
-            JOptionPane.showMessageDialog(null, "EL ESTUDIANTE HA SIDO INGRESADO");
+        try{
+            if(ListaEstudiantes.BuscarEstudiante(carne)==false){
+                Estudiantes e1 = new Estudiantes(carne, dpi, creditos, pw, nombre, correo, direccion);
+                ListaEstudiantes.IngresarEstudiante(e1);
+                JOptionPane.showMessageDialog(null, "EL ESTUDIANTE HA SIDO INGRESADO");
+                Limpiar();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "EL ESTUDIANTE CON EL CARNET" + carne + "YA EXISTE");
+                Limpiar();
+            }
         }
-        else{
-            JOptionPane.showMessageDialog(null, "EL ESTUDIANTE CON EL CARNET" + carne + "YA EXISTE");
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -415,9 +457,11 @@ public class Administrador extends javax.swing.JFrame {
         if(ListaEstudiantes.BuscarEstudiante(carne)==true){
             ListaEstudiantes.ModificarEstudiante(carne, correo, direccion, creditos);
             JOptionPane.showMessageDialog(null, "EL ESTUDIANTE HA SIDO MODIFICADO");
+            Limpiar();
         }
         else{
             JOptionPane.showMessageDialog(null, "EL ESTUDIANTE CON EL CARNET" + carne + "NO SE ENCUENTRA");
+            Limpiar();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -428,9 +472,11 @@ public class Administrador extends javax.swing.JFrame {
         if(ListaEstudiantes.BuscarEstudiante(carne)==true){
             ListaEstudiantes.EliminarEstudiantes(carne);
             JOptionPane.showMessageDialog(null, "EL ESTUDIANTE HA SIDO ELIMINADO");
+            Limpiar();
         }
         else{
             JOptionPane.showMessageDialog(null, "EL ESTUDIANTE CON EL CARNET" + carne + "NO SE ENCUENTRA");
+            Limpiar();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -472,9 +518,11 @@ public class Administrador extends javax.swing.JFrame {
             Cursos c1 = new Cursos(curso, catedraticos, creditos, lab, seccion, pre, post, estado);
             ListaCursos.IngresarCurso(c1);
             JOptionPane.showMessageDialog(null, "EL CURSO HA SIDO INGRESADO ");
+            Limpiar();
         }
         else{
             JOptionPane.showMessageDialog(null, "EL CURSO CON EL NO. "+ curso + "YA EXISTE");
+            Limpiar();
         }
         
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -512,9 +560,11 @@ public class Administrador extends javax.swing.JFrame {
         if(ListaCursos.BuscarCurso(curso)==true){
             ListaCursos.ModificarCurso(curso, catedraticos, creditos, lab, seccion, pre, post, estado);
             JOptionPane.showMessageDialog(null, " EL CURSO HA SIDO MODIFICADO ");
+            Limpiar();
         }
         else{
             JOptionPane.showMessageDialog(null, " EL CURSO CON EL NO. "+ curso + "NO EXISTE ");
+            Limpiar();
         }
         
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -526,9 +576,11 @@ public class Administrador extends javax.swing.JFrame {
         if(ListaCursos.BuscarCurso(curso)==true){
             ListaCursos.EliminarCursos(curso);
             JOptionPane.showMessageDialog(null, "EL CURSO HA SIDO ELIMINADO");
+            Limpiar();
         }
         else{
             JOptionPane.showMessageDialog(null, "EL CURSO CON EL NO. " + curso + "NO SE ENCUENTRA");
+            Limpiar();
         }
         
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -543,6 +595,16 @@ public class Administrador extends javax.swing.JFrame {
         ListaCursos.MostrarCursos();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -550,6 +612,7 @@ public class Administrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -596,6 +659,6 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
-    private ListaCircularDoble ListaEstudiantes = MenuPrincipal.ListaEstudiantes;
-    private ListaCircularSimple ListaCursos = MenuPrincipal.ListaCursos;
+    public static ListaCircularDoble ListaEstudiantes;
+    public static ListaCircularSimple ListaCursos;
 }

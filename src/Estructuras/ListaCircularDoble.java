@@ -98,8 +98,48 @@ public class ListaCircularDoble {
             }
             catch(NullPointerException e){
                 
-                System.out.println("EL ESTUDIANTE NO ESTA DISPONIBLE");
+                System.out.println("EL LISTADO TIENE ESPACIOS LIBRES");
+                break;
             }
+        }
+        while(actual!=ultimo);
+        
+        if(encontrado==true){
+            System.out.println("ESTUDIANTE ENCONTRADO");
+            return encontrado;
+            
+        }
+        else{
+            System.out.println("ESTUDIANTE NO ENCONTRADO");
+            return encontrado;
+           
+        }
+        
+    }
+    
+     public boolean LogearEstudiante(int c, int p){
+        //CREAMOS UN NODO AUXILIAR PARA RECORRER LA LISTA
+        NodoEstudiantes actual = new NodoEstudiantes();
+        //EL NODO AUXILIAR SE UBICA DE ULTIMO EN LA LISTA
+        actual=ultimo;
+        //DECLARAMOS UNA BANDERA BOOLEANA
+        boolean encontrado = false;
+        //CICLO DO WHILE QUE RECORRE LA LISTA
+        do{
+            //EL TRY CATCH POR SI EN LA CARGA MASIVA DE ESTUDIANTES DEJAMOS ALGUN ESPACIO VACIO
+            try{
+                //COMPARAMOS EL CARNET DEL ESTUDIANTE EN LA LISTA CON EL CARNET INGRESADO
+                if((actual.dato.getCarne()==c)&&(actual.dato.getContrasena()==p)){
+                    encontrado = true;
+                }
+                //EL NODO AUXILIAR SE UBICA EN EL NODO ANTERIOR DE NO SER ENCONTRADA LA COINCIDENCIA
+                         actual = actual.anterior;
+            }
+            catch(NullPointerException e){
+                System.out.println("EL LISTADO TIENE ESPACIOS LIBRES");
+                break;
+            }
+           
         }
         while(actual!=ultimo);
         

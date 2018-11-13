@@ -51,11 +51,43 @@ public class ListaSimple {
         actual = primero;
         boolean encontrado = false;
         while(actual != null){
-            if(actual.dato.getCarne() == c){
-                encontrado = true;
-                
+            try{
+                if(actual.dato.getCarne() == c){
+                    encontrado = true;
+
+                }
+                actual = actual.siguiente;
             }
-            actual = actual.siguiente;
+            catch(NullPointerException e){
+                System.out.println("EL LISTADO TIENE ESPACIOS LIBRES");
+            }
+        }
+        if(encontrado == true){
+            System.out.println("EL CATEDRATICO FUE ENCONTRADO");
+            return encontrado;
+        }
+        else{
+            System.out.println("EL CATEDRATICO NO FUE ENCONTRADO");
+            return encontrado;
+        }
+        
+    }
+    
+    public boolean LogearCatedratico(int c, int p){
+        NodoCatedraticos actual = new NodoCatedraticos();
+        actual = primero;
+        boolean encontrado = false;
+        while(actual != null){
+            try{
+                if((actual.dato.getCarne() == c)&&(actual.dato.getContrasena()==p)){
+                    encontrado = true;
+
+                }
+                actual = actual.siguiente;
+            }
+            catch(NullPointerException e){
+                System.out.println("EL LISTADO TIENE ESPACIOS LIBRES");
+            }
         }
         if(encontrado == true){
             System.out.println("EL CATEDRATICO FUE ENCONTRADO");
