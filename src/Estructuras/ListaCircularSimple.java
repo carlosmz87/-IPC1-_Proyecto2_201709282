@@ -180,5 +180,29 @@ public class ListaCircularSimple {
         }
     }
     
+    public int[] ListarCursos(){
+        NodoCursos actual = new NodoCursos();
+        actual = primero;
+        boolean encontrado = false;
+        int Cactual[]= new int[100];
+        int i=0;
+        do{
+            try{
+                
+                
+                    Cactual[i]=actual.dato.getCurso();
+                    actual = actual.siguiente;
+                    i++;
+                
+                
+            }
+            catch(NullPointerException e){
+                System.out.println("LA LISTA TIENE UN ESPACIO NULO");
+            }
+        }
+        while(actual != primero);
+        return Cactual;
+    }
+    
     
 }
