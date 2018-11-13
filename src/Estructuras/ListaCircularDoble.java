@@ -16,13 +16,18 @@ public class ListaCircularDoble {
     //CREAMOS DOS VARIABLES DE TIPO NODOESTUDIANTES QUE APUNTAN AL PRIMERO Y ULTIMO DE LA LISTA
     NodoEstudiantes primero;
     NodoEstudiantes ultimo;
+    Estudiantes logueado;
     
     //CONTRURCTOR: CREA LA LISTA Y APUNTA EL PRIMER DATO A NULL Y EL ULTIMO A NULL
     public ListaCircularDoble(){
         primero = null;
         ultimo = null;
+        logueado=null;
     }
     
+    public Estudiantes getLogueado(){
+        return logueado;
+    }
     //CREA UN NUEVO ESTUDIANTE Y LO INGRESA EN LA LISTA
     public void IngresarEstudiante(Estudiantes x){
         //CREAMOS UN NUEVO NODO
@@ -131,6 +136,7 @@ public class ListaCircularDoble {
                 //COMPARAMOS EL CARNET DEL ESTUDIANTE EN LA LISTA CON EL CARNET INGRESADO
                 if((actual.dato.getCarne()==c)&&(actual.dato.getContrasena()==p)){
                     encontrado = true;
+                    logueado=actual.dato;
                 }
                 //EL NODO AUXILIAR SE UBICA EN EL NODO ANTERIOR DE NO SER ENCONTRADA LA COINCIDENCIA
                          actual = actual.anterior;

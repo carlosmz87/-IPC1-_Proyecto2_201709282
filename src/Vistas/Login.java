@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Control.Catedraticos;
+import Control.Estudiantes;
 import Estructuras.ListaCircularDoble;
 
 import Estructuras.ListaSimple;
@@ -21,6 +23,8 @@ public class Login extends javax.swing.JFrame {
      */
     public static ListaCircularDoble ListaEstudiantes;
     public static ListaSimple ListaCatedraticos;
+    public static Estudiantes logueado;
+    public static Catedraticos logueado2;
     public Login() {
         if(ListaEstudiantes==null){
             ListaEstudiantes = MenuPrincipal.ListaEstudiantes;
@@ -168,6 +172,8 @@ public class Login extends javax.swing.JFrame {
             //ESTUDIANTE
         
             else if((ListaEstudiantes.LogearEstudiante(usuario, contrasena))&&(seleccionado == 1)){
+                logueado=ListaEstudiantes.getLogueado();
+                
                 dispose();
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
@@ -179,6 +185,7 @@ public class Login extends javax.swing.JFrame {
             
             //CATEDRATICO
             else if(ListaCatedraticos.LogearCatedratico(usuario, contrasena)&&(seleccionado == 2)){
+                logueado2=ListaCatedraticos.getLogueado();
                 dispose();
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {

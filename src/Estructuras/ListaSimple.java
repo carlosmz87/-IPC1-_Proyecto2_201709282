@@ -15,6 +15,7 @@ import Nodos.NodoCatedraticos;
 public class ListaSimple {
     NodoCatedraticos primero;
     NodoCatedraticos ultimo;
+    Catedraticos logueado;
     
     public ListaSimple(){
         primero = null;
@@ -80,6 +81,7 @@ public class ListaSimple {
         while(actual != null){
             try{
                 if((actual.dato.getCarne() == c)&&(actual.dato.getContrasena()==p)){
+                    logueado = actual.dato;
                     encontrado = true;
 
                 }
@@ -98,6 +100,10 @@ public class ListaSimple {
             return encontrado;
         }
         
+    }
+    
+    public Catedraticos getLogueado(){
+        return logueado;
     }
     
     public void ModificarCatedratico(int c){
