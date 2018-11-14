@@ -76,6 +76,36 @@ public class ListaCircularSimple {
         }
     }
     
+    public Cursos getObjetoCurso(int x){
+        NodoCursos actual = new NodoCursos();
+        actual = primero;
+        boolean encontrado = false;
+        do{
+            try{
+                if(actual.dato.getCurso()==x){
+                    encontrado = true;
+                    
+                }
+                //EL NODO AUXILIAR SE UBICA EN EL NODO ANTERIOR DE NO SER ENCONTRADA LA COINCIDENCIA
+                actual = actual.siguiente;
+             
+            
+            }
+            catch(NullPointerException e){
+                System.out.println("LA LISTA TIENE UN ESPACIO NULO");
+            }
+        }
+        while(actual != primero);
+        if(encontrado == true){
+            System.out.println("EL CURSO FUE ENCONTRADO");
+            return actual.dato;
+        }
+        else{
+            System.out.println("EL CURSO NO FUE ENCONTRADO");
+            return null;
+        }
+    }
+    
     
     public void ModificarCurso(int c, int cat, int cred, boolean laboratorio, char sec, int [] pr, int po, boolean est){
         NodoCursos actual = new NodoCursos();

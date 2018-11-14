@@ -7,6 +7,7 @@ package Estructuras;
 
 import Control.Semestres;
 import Nodos.NodoSemestres;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,18 +23,25 @@ public class ListaDoble {
     public void IngresarSemestre(Semestres x){
         NodoSemestres nuevo = new NodoSemestres();
         nuevo.dato=x;
-        if(primero==null){
-            primero=nuevo;
-            primero.siguiente=null;
-            primero.anterior=null;
-            ultimo = primero;
+        boolean apro= nuevo.dato.isEstado();
+        boolean asig= nuevo.dato.isAsignado();
+        if((apro == false )&&(asig==false)){
+            nuevo.dato.setAsignado(true);
+            if(primero==null){
+                primero=nuevo;
+                primero.siguiente=null;
+                primero.anterior=null;
+                ultimo = primero;
+            }
+            else{
+                ultimo.siguiente=nuevo;
+                nuevo.anterior=ultimo;
+                nuevo.siguiente=null;
+            }
         }
-        else{
-            ultimo.siguiente=nuevo;
-            nuevo.anterior=ultimo;
-            nuevo.siguiente=null;
+        else if(asig==true){
+            JOptionPane.showMessageDialog(null, " EL CURSO YA FUE ASIGNADO ");
         }
-        
     }
     
     public void MostrarSemestres(){
@@ -72,13 +80,14 @@ public class ListaDoble {
         }
     }
     
-    public void EliminarSemestre(int numero, boolean asignado){
+    public void EliminarSemestre(int numero, int curso, boolean asignado){
         NodoSemestres actual = new NodoSemestres();
         NodoSemestres atras = new NodoSemestres();
         actual = primero;
         atras = null;
         while(actual != null){
-            if((actual.dato.getNumero()==numero) &&(actual.dato.isAsignado()==true)){
+            if((actual.dato.getNumero()==numero)&&(actual.dato.getCurso()==curso)&&(actual.dato.isAsignado()==true)){
+                
                 if(actual==primero){
                     primero = primero.siguiente;
                     primero.anterior=null;

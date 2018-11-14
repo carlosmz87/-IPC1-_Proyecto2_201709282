@@ -5,7 +5,11 @@
  */
 package Vistas;
 
+import Control.Cursos;
+import Control.Estudiantes;
+import Control.Semestres;
 import Estructuras.ListaCircularSimple;
+import Estructuras.ListaDoble;
 
 /**
  *
@@ -17,8 +21,10 @@ public class MenuEstudiantes extends javax.swing.JFrame {
      * Creates new form MenuEstudiantes
      */
     public static ListaCircularSimple ListaCursos;
+    ListaDoble ListaSemestres;
     int[] Listado;
     String[] ListadoCursos;
+    Estudiantes logueado= Login.logueado;
     public MenuEstudiantes() {
         if(ListaCursos == null){
             ListaCursos = MenuPrincipal.ListaCursos;
@@ -34,7 +40,7 @@ public class MenuEstudiantes extends javax.swing.JFrame {
             ListadoCursos[i] = String.valueOf(Listado[i]);
         }
          
-        
+        ListaSemestres = new ListaDoble();
         initComponents();
     }
 
@@ -49,9 +55,6 @@ public class MenuEstudiantes extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
@@ -64,13 +67,12 @@ public class MenuEstudiantes extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jCheckBox1.setText("DESASIGNAR SEGUNDO");
-
-        jCheckBox2.setText("DESASIGNAR PRIMERO");
-
-        jCheckBox3.setText("DESASIGNAR TERCERO");
-
         jButton1.setText("ASIGNAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("VOLVER AL LOGIN");
 
@@ -83,17 +85,8 @@ public class MenuEstudiantes extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jCheckBox2)
-                        .addGap(51, 51, 51)
-                        .addComponent(jCheckBox1)
-                        .addGap(50, 50, 50)
-                        .addComponent(jCheckBox3)))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -120,16 +113,41 @@ public class MenuEstudiantes extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                .addGap(116, 116, 116))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        if(jComboBox1.getSelectedIndex()==0){
+            numero = 1;
+        }
+        if(jComboBox1.getSelectedIndex()==1){
+            numero = 2;
+        }
+        if(jComboBox1.getSelectedIndex()==2){
+            numero = 3;
+        }
+        Object cur = jComboBox2.getSelectedItem();
+        int curso = Integer.parseInt((String) cur);
+        Cursos c1 = ListaCursos.getObjetoCurso(curso);
+        int catedratico = c1.getCatedraticos();
+        boolean lab = c1.isLab();
+        int [] pre = c1.getPre();
+        int post = c1.getPost();
+        int nota = 0;
+        boolean estado = c1.isEstado();
+        boolean asignado = false;
+        int carne = logueado.getCarne();
+        String nombre = logueado.getNombre();
+        Semestres s1 = new Semestres(numero, curso, catedratico, lab, pre, post, nota, estado, carne, nombre, asignado);
+        ListaSemestres.IngresarSemestre(s1);
+        ListaSemestres.MostrarSemestres();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,12 +157,10 @@ public class MenuEstudiantes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JComboBox jComboBox1;
+    public static javax.swing.JComboBox jComboBox1;
     public static javax.swing.JComboBox jComboBox2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+    public int numero;
 }
