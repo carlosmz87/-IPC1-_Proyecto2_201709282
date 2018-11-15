@@ -140,7 +140,7 @@ public class MenuEstudiantes extends javax.swing.JFrame {
             int [] pre = c1.getPre();
             int post = c1.getPost();
             int nota = 0;
-            boolean estado = c1.isEstado();
+            boolean estado = false;
             boolean asignado = false;
             int carne = logueado.getCarne();
             String nombre = logueado.getNombre();

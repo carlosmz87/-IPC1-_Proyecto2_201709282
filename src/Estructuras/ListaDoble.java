@@ -113,7 +113,7 @@ public class ListaDoble {
                 
                 if((actual.dato.getCurso()==cur)&&(actual.dato.getNumero()==num)&&(actual.dato.isAsignado())){
                     Eactual[i]=actual.dato.getCarnet();
-                    actual = actual.siguiente;
+                    
                     i++;
                 }
                 
@@ -161,7 +161,7 @@ public class ListaDoble {
                 
                 if(actual.dato.getCatedratico()==cat){
                     Cactual[i]=actual.dato.getCurso();
-                    actual = actual.siguiente;
+                    
                     i++;
                 }
                 
