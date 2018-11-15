@@ -23,10 +23,17 @@ public class MenuEstudiantes extends javax.swing.JFrame {
      */
     public static ListaCircularSimple ListaCursos=Driver.ListaCursos;
     public static ListaDoble ListaSemestres=Driver.ListaSemestres;
-    int[] Listado;
+    int[] Listado, pre;
+    int numero, curso, catedratico, post, nota, carne;
+    boolean lab, estado, asignado;
     String[] ListadoCursos;
-    Estudiantes logueado;
+    String nombre;
+    Object cur;
+    Cursos c1;
+    Semestres s1;
+    public static Estudiantes logueado;
     public MenuEstudiantes() {
+        
         logueado= Login.logueado;
         Listado= new int[100];
         Listado = ListaCursos.ListarCursos();
@@ -122,7 +129,7 @@ public class MenuEstudiantes extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try{
-            int numero=0;
+            
             if(jComboBox1.getSelectedIndex()==0){
                 numero = 1;
             }
@@ -132,19 +139,19 @@ public class MenuEstudiantes extends javax.swing.JFrame {
             else if(jComboBox1.getSelectedIndex()==2){
                 numero = 3;
             }
-            Object cur = jComboBox2.getSelectedItem();
-            int curso = Integer.parseInt((String) cur);
-            Cursos c1 = ListaCursos.getObjetoCurso(curso);
-            int catedratico = c1.getCatedraticos();
-            boolean lab = c1.isLab();
-            int [] pre = c1.getPre();
-            int post = c1.getPost();
-            int nota = 0;
-            boolean estado = false;
-            boolean asignado = false;
-            int carne = logueado.getCarne();
-            String nombre = logueado.getNombre();
-            Semestres s1 = new Semestres(numero, curso, catedratico, lab, pre, post, nota, estado, carne, nombre, asignado);
+            
+            curso = Integer.parseInt((String) jComboBox2.getSelectedItem());
+            c1 = ListaCursos.getObjetoCurso(curso);
+            catedratico = c1.getCatedraticos();
+            lab = c1.isLab();
+            pre = c1.getPre();
+            post = c1.getPost();
+            nota = 0;
+            estado = false;
+            asignado = false;
+            carne = logueado.getCarne();
+            nombre = logueado.getNombre();
+            s1 = new Semestres(numero, curso, catedratico, lab, pre, post, nota, estado, carne, nombre, asignado);
             ListaSemestres.IngresarSemestre(s1);
             ListaSemestres.MostrarSemestres();
         }
