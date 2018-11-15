@@ -16,9 +16,13 @@ import javax.swing.JOptionPane;
 public class ListaDoble {
     NodoSemestres primero;
     NodoSemestres ultimo;
+    int Cactual[];
+    int Eactual[];
     public ListaDoble(){
         primero=null;
         ultimo=null;
+        Cactual = new int[100];
+        Eactual = new int[100];
     }
     public void IngresarSemestre(Semestres x){
         NodoSemestres nuevo = new NodoSemestres();
@@ -106,7 +110,7 @@ public class ListaDoble {
         NodoSemestres actual = new NodoSemestres();
         actual = primero;
         
-        int Eactual[]= new int[100];
+        
         int i=0;
         while(actual != null){
             try{
@@ -154,7 +158,7 @@ public class ListaDoble {
         NodoSemestres actual = new NodoSemestres();
         actual = primero;
         
-        int Cactual[]= new int[100];
+        
         int i=0;
         while(actual != null){
             try{

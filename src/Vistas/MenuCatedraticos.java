@@ -22,33 +22,23 @@ public class MenuCatedraticos extends javax.swing.JFrame {
     public static ListaCircularSimple ListaCursos=Driver.ListaCursos;
     public static ListaSimple ListaCatedraticos=Driver.ListaCatedraticos;
     public static ListaDoble ListaSemestres=Driver.ListaSemestres;
-    int[] Listado, Listado2;
-    String[] ListadoCursos, ListadoEstudiantes;
+    public int[] Listado, Listado2;
+    public String[] ListadoCursos, ListadoEstudiantes;
     public static Catedraticos logueado;
-    int numero, e, catedratico, curso;
-    
-    String nom;
+    public int numero, e, catedratico, curso;
+    public String nom;
     /**
      * Creates new form MenuCatedraticos
      */
     public MenuCatedraticos() {
         Listado= new int[100];
         Listado2 = new int[100];
-          
-        logueado = Login.logueado2;
-        Listado = ListaSemestres.ListarCursos(catedratico);
-        Listado2 = ListaSemestres.ListarEstudiantes(numero, curso);
         ListadoCursos = new String[100];
-        for(int i=0; i<100; i++){
-            ListadoCursos[i] = String.valueOf(Listado[i]);
-        }
         ListadoEstudiantes = new String[100];
-        for(int i=0; i<100; i++){
-            ListadoEstudiantes[i] = String.valueOf(Listado2[i]);
-        }
+        logueado = Login.logueado2;
         
         
-            
+        
         initComponents();
     }
 
@@ -203,8 +193,19 @@ public class MenuCatedraticos extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
+        
         curso = logueado.getCurso();
-        catedratico = logueado.getCarne();
+        catedratico = logueado.getCarne();  
+        Listado = ListaSemestres.ListarCursos(catedratico);
+        Listado2 = ListaSemestres.ListarEstudiantes(numero, curso);
+        for(int i=0; i<100; i++){
+            ListadoCursos[i] = String.valueOf(Listado[i]);
+        }
+        
+        for(int i=0; i<100; i++){
+            ListadoEstudiantes[i] = String.valueOf(Listado2[i]);
+        }
         e = Integer.parseInt((String) jComboBox3.getSelectedItem());
         nom = ListaSemestres.NombreAsignado(e);
         jLabel6.setText(nom);
