@@ -6,6 +6,7 @@
 package Vistas;
 
 import Control.Cursos;
+import Control.Driver;
 import Control.Estudiantes;
 import Control.Semestres;
 import Estructuras.ListaCircularSimple;
@@ -20,19 +21,13 @@ public class MenuEstudiantes extends javax.swing.JFrame {
     /**
      * Creates new form MenuEstudiantes
      */
-    public static ListaCircularSimple ListaCursos;
-    ListaDoble ListaSemestres;
+    public static ListaCircularSimple ListaCursos=Driver.ListaCursos;
+    public static ListaDoble ListaSemestres=Driver.ListaSemestres;
     int[] Listado;
     String[] ListadoCursos;
-    Estudiantes logueado= Login.logueado;
+    Estudiantes logueado;
     public MenuEstudiantes() {
-        if(ListaCursos == null){
-            ListaCursos = MenuPrincipal.ListaCursos;
-        }
-        else{
-            ListaCursos= Administrador.ListaCursos;
-        }
-        
+        logueado= Login.logueado;
         Listado= new int[100];
         Listado = ListaCursos.ListarCursos();
         ListadoCursos = new String[100];
@@ -40,7 +35,7 @@ public class MenuEstudiantes extends javax.swing.JFrame {
             ListadoCursos[i] = String.valueOf(Listado[i]);
         }
          
-        ListaSemestres = new ListaDoble();
+        
         initComponents();
     }
 
@@ -75,6 +70,11 @@ public class MenuEstudiantes extends javax.swing.JFrame {
         });
 
         jButton2.setText("VOLVER AL LOGIN");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PRIMER SEMESTRE", "SEGUNDO SEMESTRE", "TERCER SEMESTRE" }));
 
@@ -121,33 +121,47 @@ public class MenuEstudiantes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        if(jComboBox1.getSelectedIndex()==0){
-            numero = 1;
+        try{
+            int numero=0;
+            if(jComboBox1.getSelectedIndex()==0){
+                numero = 1;
+            }
+            else if(jComboBox1.getSelectedIndex()==1){
+                numero = 2;
+            }
+            else if(jComboBox1.getSelectedIndex()==2){
+                numero = 3;
+            }
+            Object cur = jComboBox2.getSelectedItem();
+            int curso = Integer.parseInt((String) cur);
+            Cursos c1 = ListaCursos.getObjetoCurso(curso);
+            int catedratico = c1.getCatedraticos();
+            boolean lab = c1.isLab();
+            int [] pre = c1.getPre();
+            int post = c1.getPost();
+            int nota = 0;
+            boolean estado = c1.isEstado();
+            boolean asignado = false;
+            int carne = logueado.getCarne();
+            String nombre = logueado.getNombre();
+            Semestres s1 = new Semestres(numero, curso, catedratico, lab, pre, post, nota, estado, carne, nombre, asignado);
+            ListaSemestres.IngresarSemestre(s1);
+            ListaSemestres.MostrarSemestres();
         }
-        if(jComboBox1.getSelectedIndex()==1){
-            numero = 2;
+        catch(Exception e){
+            System.out.println(" NO SE MODIFICARON");
         }
-        if(jComboBox1.getSelectedIndex()==2){
-            numero = 3;
-        }
-        Object cur = jComboBox2.getSelectedItem();
-        int curso = Integer.parseInt((String) cur);
-        Cursos c1 = ListaCursos.getObjetoCurso(curso);
-        int catedratico = c1.getCatedraticos();
-        boolean lab = c1.isLab();
-        int [] pre = c1.getPre();
-        int post = c1.getPost();
-        int nota = 0;
-        boolean estado = c1.isEstado();
-        boolean asignado = false;
-        int carne = logueado.getCarne();
-        String nombre = logueado.getNombre();
-        Semestres s1 = new Semestres(numero, curso, catedratico, lab, pre, post, nota, estado, carne, nombre, asignado);
-        ListaSemestres.IngresarSemestre(s1);
-        ListaSemestres.MostrarSemestres();
-        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,5 +176,5 @@ public class MenuEstudiantes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
-    public int numero;
+    
 }

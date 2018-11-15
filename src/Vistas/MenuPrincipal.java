@@ -10,6 +10,7 @@ import Control.CargarCursos;
 import Control.CargarEstudiantes;
 import Control.Catedraticos;
 import Control.Cursos;
+import Control.Driver;
 import Control.Estudiantes;
 import Estructuras.ListaCircularDoble;
 import Estructuras.ListaCircularSimple;
@@ -20,14 +21,14 @@ import Estructuras.ListaSimple;
  * @author carlosmartinez
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    public static ListaCircularDoble ListaEstudiantes=Driver.ListaEstudiantes;
+    public static ListaCircularSimple ListaCursos=Driver.ListaCursos;
+    public static ListaSimple ListaCatedraticos=Driver.ListaCatedraticos;
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
-        ListaCursos = new ListaCircularSimple();
-        ListaEstudiantes = new ListaCircularDoble();
-        ListaCatedraticos = new ListaSimple();
+       
         initComponents();
     }
 
@@ -169,9 +170,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
    
-    public static  ListaCircularDoble ListaEstudiantes;
-    public static  ListaCircularSimple ListaCursos;
-    public static  ListaSimple ListaCatedraticos;
+   
     public static Estudiantes [] estudiante;
     public static Cursos [] curso;
     public static Catedraticos [] catedratico;

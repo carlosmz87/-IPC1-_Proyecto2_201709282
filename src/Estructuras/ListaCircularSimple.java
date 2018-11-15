@@ -213,7 +213,7 @@ public class ListaCircularSimple {
     public int[] ListarCursos(){
         NodoCursos actual = new NodoCursos();
         actual = primero;
-        boolean encontrado = false;
+        
         int Cactual[]= new int[100];
         int i=0;
         do{

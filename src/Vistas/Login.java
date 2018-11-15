@@ -6,6 +6,7 @@
 package Vistas;
 
 import Control.Catedraticos;
+import Control.Driver;
 import Control.Estudiantes;
 import Estructuras.ListaCircularDoble;
 
@@ -21,18 +22,12 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public static ListaCircularDoble ListaEstudiantes;
-    public static ListaSimple ListaCatedraticos;
+    public static ListaCircularDoble ListaEstudiantes=Driver.ListaEstudiantes;
+    public static ListaSimple ListaCatedraticos=Driver.ListaCatedraticos;
     public static Estudiantes logueado;
     public static Catedraticos logueado2;
     public Login() {
-        if(ListaEstudiantes==null){
-            ListaEstudiantes = MenuPrincipal.ListaEstudiantes;
-        }
-        else{
-            ListaEstudiantes = Administrador.ListaEstudiantes;
-        }
-        ListaCatedraticos = MenuPrincipal.ListaCatedraticos;
+       
         initComponents();
     }
 
@@ -143,7 +138,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-            
+         
         try{
             seleccionado = jComboBox1.getSelectedIndex();
             user = new String(jTextField1.getText());

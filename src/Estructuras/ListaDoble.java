@@ -102,5 +102,79 @@ public class ListaDoble {
         }
     }
     
+    public int[] ListarEstudiantes(int num, int cur){
+        NodoSemestres actual = new NodoSemestres();
+        actual = primero;
+        
+        int Eactual[]= new int[100];
+        int i=0;
+        while(actual != null){
+            try{
+                
+                if((actual.dato.getCurso()==cur)&&(actual.dato.getNumero()==num)&&(actual.dato.isAsignado())){
+                    Eactual[i]=actual.dato.getCarnet();
+                    actual = actual.siguiente;
+                    i++;
+                }
+                
+                
+            }
+            catch(NullPointerException e){
+                System.out.println("LA LISTA TIENE UN ESPACIO NULO");
+            }
+               
+        }
+        actual = actual.siguiente;
+        return Eactual;
+    }
+    
+    public String NombreAsignado(int x){
+        NodoSemestres actual = new NodoSemestres();
+        actual = primero;
+        String nom ="";
+        while(actual != null){
+            try{
+                
+                if(actual.dato.getCarnet()==x){
+                    nom=actual.dato.getNombre();
+                }
+                
+                
+            }
+            catch(NullPointerException e){
+                System.out.println("LA LISTA TIENE UN ESPACIO NULO");
+            }
+               
+        }
+        actual = actual.siguiente;
+        return nom;
+    
+    }
+    public int[] ListarCursos( int cat){
+        NodoSemestres actual = new NodoSemestres();
+        actual = primero;
+        
+        int Cactual[]= new int[100];
+        int i=0;
+        while(actual != null){
+            try{
+                
+                if(actual.dato.getCatedratico()==cat){
+                    Cactual[i]=actual.dato.getCurso();
+                    actual = actual.siguiente;
+                    i++;
+                }
+                
+                
+            }
+            catch(NullPointerException e){
+                System.out.println("LA LISTA TIENE UN ESPACIO NULO");
+            }
+               
+        }
+        actual = actual.siguiente;
+        return Cactual;
+    }
+    
     
 }
