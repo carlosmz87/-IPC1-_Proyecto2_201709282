@@ -43,9 +43,7 @@ public class MenuCatedraticos extends javax.swing.JFrame {
             ListadoCursos[i] = String.valueOf(Listado[i]);
         }
         
-        for(int i=0; i<100; i++){
-            ListadoEstudiantes[i] = String.valueOf(Listado2[i]);
-        }
+        
         
         
         initComponents();
@@ -212,12 +210,11 @@ public class MenuCatedraticos extends javax.swing.JFrame {
             numero=3;
         }
         
-        
-         
-        
-        
         Listado2 = ListaSemestres.ListarEstudiantes(numero, curso);
-        
+        for(int i=0; i<100; i++){
+            ListadoEstudiantes[i] = String.valueOf(Listado2[i]);
+        }
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(ListadoEstudiantes));
         try{
             nombre = Integer.parseInt((String) jComboBox3.getSelectedItem());
             nom = ListaSemestres.NombreAsignado(nombre);
