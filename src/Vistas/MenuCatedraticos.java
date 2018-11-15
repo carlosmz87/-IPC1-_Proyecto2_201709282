@@ -42,10 +42,6 @@ public class MenuCatedraticos extends javax.swing.JFrame {
         for(int i=0; i<100; i++){
             ListadoCursos[i] = String.valueOf(Listado[i]);
         }
-        
-        
-        
-        
         initComponents();
     }
 
@@ -241,7 +237,7 @@ public class MenuCatedraticos extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
-    public javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

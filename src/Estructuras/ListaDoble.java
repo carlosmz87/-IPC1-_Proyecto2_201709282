@@ -55,18 +55,18 @@ public class ListaDoble {
         }
     }
     
-    public void BuscarSemestre(int x){
+    public boolean BuscarSemestre(int x, int c, boolean a){
         NodoSemestres actual = new NodoSemestres();
         actual = primero;
         boolean encontrado = false;
         while(actual != null){
-            if(actual.dato.getNumero()== x){
+            if((actual.dato.getNumero()== x)&&(actual.dato.getCurso()==c)&&(actual.dato.isAsignado()==false)){
                 encontrado = true;
                 System.out.println("SEMESTRE EXISTENTE");
             }
             actual = actual.siguiente;
         }
-    
+        return encontrado;
     }
     
     public void DesignarCurso(int numero, boolean asignado){

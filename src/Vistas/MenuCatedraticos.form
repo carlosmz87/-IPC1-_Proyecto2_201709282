@@ -191,9 +191,6 @@
           <Connection code="new javax.swing.DefaultComboBoxModel(ListadoEstudiantes)" type="code"/>
         </Property>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <AuxValues>
