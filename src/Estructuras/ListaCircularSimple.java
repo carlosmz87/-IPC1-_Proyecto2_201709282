@@ -234,5 +234,30 @@ public class ListaCircularSimple {
         return Cactual;
     }
     
+    public int[] ListarCursos2(int x){
+        NodoCursos actual = new NodoCursos();
+        actual = primero;
+        
+        int Cactual[]= new int[100];
+        int i=0;
+        do{
+            try{
+                
+                if(actual.dato.getCatedraticos()==x){
+                    Cactual[i]=actual.dato.getCurso();
+                    
+                    i++;
+                }
+                
+            }
+            catch(NullPointerException e){
+                System.out.println("LA LISTA TIENE UN ESPACIO NULO");
+            }
+            actual = actual.siguiente;
+        }
+        while(actual != primero);
+        return Cactual;
+    }
+    
     
 }

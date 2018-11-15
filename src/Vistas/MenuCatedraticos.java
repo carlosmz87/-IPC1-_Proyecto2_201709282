@@ -36,7 +36,16 @@ public class MenuCatedraticos extends javax.swing.JFrame {
         ListadoCursos = new String[100];
         ListadoEstudiantes = new String[100];
         logueado = Login.logueado2;
+        curso = logueado.getCurso();
+        catedratico = logueado.getCarne(); 
+        Listado = ListaCursos.ListarCursos2(catedratico);
+        for(int i=0; i<100; i++){
+            ListadoCursos[i] = String.valueOf(Listado[i]);
+        }
         
+        for(int i=0; i<100; i++){
+            ListadoEstudiantes[i] = String.valueOf(Listado2[i]);
+        }
         
         
         initComponents();
@@ -193,19 +202,22 @@ public class MenuCatedraticos extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(jComboBox1.getSelectedIndex()==0){
+            numero=1;
+        }
+        if(jComboBox1.getSelectedIndex()==1){
+            numero=2;
+        }
+        if(jComboBox1.getSelectedIndex()==3){
+            numero=3;
+        }
         
         
-        curso = logueado.getCurso();
-        catedratico = logueado.getCarne();  
-        Listado = ListaSemestres.ListarCursos(catedratico);
+         
+        
+        
         Listado2 = ListaSemestres.ListarEstudiantes(numero, curso);
-        for(int i=0; i<100; i++){
-            ListadoCursos[i] = String.valueOf(Listado[i]);
-        }
         
-        for(int i=0; i<100; i++){
-            ListadoEstudiantes[i] = String.valueOf(Listado2[i]);
-        }
         try{
             nombre = Integer.parseInt((String) jComboBox3.getSelectedItem());
             nom = ListaSemestres.NombreAsignado(nombre);
