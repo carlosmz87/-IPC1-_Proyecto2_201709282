@@ -25,7 +25,7 @@ public class MenuCatedraticos extends javax.swing.JFrame {
     public int[] Listado, Listado2;
     public String[] ListadoCursos, ListadoEstudiantes;
     public static Catedraticos logueado;
-    public int numero, e, catedratico, curso;
+    public int numero, nombre, catedratico, curso;
     public String nom;
     /**
      * Creates new form MenuCatedraticos
@@ -206,10 +206,14 @@ public class MenuCatedraticos extends javax.swing.JFrame {
         for(int i=0; i<100; i++){
             ListadoEstudiantes[i] = String.valueOf(Listado2[i]);
         }
-        e = Integer.parseInt((String) jComboBox3.getSelectedItem());
-        nom = ListaSemestres.NombreAsignado(e);
-        jLabel6.setText(nom);
-        
+        try{
+            nombre = Integer.parseInt((String) jComboBox3.getSelectedItem());
+            nom = ListaSemestres.NombreAsignado(nombre);
+            jLabel6.setText(nom);
+        }
+        catch(NumberFormatException e){
+            System.out.println("Ingresa dato correcto");
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

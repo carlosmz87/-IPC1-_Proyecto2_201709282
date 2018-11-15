@@ -114,7 +114,7 @@ public class ListaDoble {
                 
                 if((actual.dato.getCurso()==cur)&&(actual.dato.getNumero()==num)&&(actual.dato.isAsignado())){
                     Eactual[i]=actual.dato.getCarnet();
-                    actual=actual.siguiente;
+                    
                     i++;
                 }
                 
@@ -123,7 +123,7 @@ public class ListaDoble {
             catch(NullPointerException e){
                 System.out.println("LA LISTA TIENE UN ESPACIO NULO");
             }
-               
+            actual=actual.siguiente;   
         }
         
         return Eactual;
@@ -145,6 +145,7 @@ public class ListaDoble {
             catch(NullPointerException e){
                 System.out.println("LA LISTA TIENE UN ESPACIO NULO");
             }
+            actual=actual.siguiente;
                
         }
         
@@ -161,7 +162,7 @@ public class ListaDoble {
                 
                 if(actual.dato.getCatedratico()==cat){
                     Cactual[i]=actual.dato.getCurso();
-                    actual=actual.siguiente;
+                    
                     i++;
                 }
                 
@@ -170,7 +171,7 @@ public class ListaDoble {
             catch(NullPointerException e){
                 System.out.println("LA LISTA TIENE UN ESPACIO NULO");
             }
-            
+            actual=actual.siguiente;
                
         }
         
