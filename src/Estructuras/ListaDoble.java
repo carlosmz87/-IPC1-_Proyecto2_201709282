@@ -56,12 +56,12 @@ public class ListaDoble {
         }
         
     }
-    public boolean getAsignacion(int x, int c){
+    public boolean getAsignacion(int x, int car, int c){
         NodoSemestres actual = new NodoSemestres();
         actual = primero;
         boolean encontrado = false;
         while(actual != null){
-            if((actual.dato.getNumero()== x)&&(actual.dato.getCurso()==c)){
+            if((actual.dato.getNumero()== x)&&(actual.dato.getCurso()==c)&&(actual.dato.getCarnet()==car)){
                 encontrado = true;
                 encontrado=actual.dato.isAsignado();
                 System.out.println("SEMESTRE EXISTENTE");
@@ -70,12 +70,12 @@ public class ListaDoble {
         }
         return encontrado;
     }
-    public boolean BuscarSemestre(int x, int c, boolean a){
+    public boolean BuscarSemestre(int x, int car, int c, boolean a){
         NodoSemestres actual = new NodoSemestres();
         actual = primero;
         boolean encontrado = false;
         while(actual != null){
-            if((actual.dato.getNumero()== x)&&(actual.dato.getCurso()==c)&&(actual.dato.isAsignado()==false)){
+            if((actual.dato.getNumero()== x)&&(actual.dato.getCarnet()==car)&&(actual.dato.getCurso()==c)&&(actual.dato.isAsignado()==false)){
                 encontrado = true;
                 System.out.println("SEMESTRE EXISTENTE");
             }
@@ -193,5 +193,26 @@ public class ListaDoble {
         return Cactual;
     }
     
+     public void ModificarNota(int x, int n){
+        NodoSemestres actual = new NodoSemestres();
+        actual = primero;
+        boolean encontrado = false;
+        while(actual != null){
+            if((actual.dato.getCarnet()== x)){
+                encontrado = true;
+                actual.dato.setNota(n);
+                if((actual.dato.getNota()>=61)&&(actual.dato.getNota()<=100)){
+                    actual.dato.setEstado(true);
+                    JOptionPane.showMessageDialog(null, "EL ESTUDIANTE" + x +"HA APROBADO");
+                }
+                else{
+                    actual.dato.setEstado(false);
+                    JOptionPane.showMessageDialog(null, "EL ESTUDIANTE" + x +"HA REPROBADO");
+                }
+            }
+            actual = actual.siguiente;
+        }
+        
+    }
     
 }
