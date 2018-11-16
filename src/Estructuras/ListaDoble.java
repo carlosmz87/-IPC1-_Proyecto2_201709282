@@ -193,12 +193,12 @@ public class ListaDoble {
         return Cactual;
     }
     
-     public void ModificarNota(int x, int n){
+     public void ModificarNota(int x, int cur, int n){
         NodoSemestres actual = new NodoSemestres();
         actual = primero;
         boolean encontrado = false;
         while(actual != null){
-            if((actual.dato.getCarnet()== x)){
+            if((actual.dato.getCarnet()== x)&&(actual.dato.getCurso()==cur)){
                 encontrado = true;
                 actual.dato.setNota(n);
                 if((actual.dato.getNota()>=61)&&(actual.dato.getNota()<=100)){
