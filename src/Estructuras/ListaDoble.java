@@ -46,7 +46,24 @@ public class ListaDoble {
             JOptionPane.showMessageDialog(null, " EL CURSO YA FUE ASIGNADO ");
         }
     }
-    
+    public String[] MostrarCursosAprobados(int x, boolean est){
+        NodoSemestres actual = new NodoSemestres();
+        actual=primero;
+        String resp[]=new String[100];
+        int i=0;
+        while(actual!=null){
+            if((actual.dato.getCarnet()==x)&&(actual.dato.isEstado()==true)){
+                String car=String.valueOf(actual.dato.getCarnet());
+                String c=String.valueOf(actual.dato.getCurso());
+                String n=String.valueOf(actual.dato.getNota());
+                String nom = actual.dato.getNombre();
+                resp[i] = "EL ESTUDIANTE " + car + " " + nom + " EN EL CURSO: "+ c + " TIENE UNA NOTA DE: " + n + " CON LO CUAL APRUEBA EL CURSO"; 
+                i++;
+            }
+            actual=actual.siguiente;
+        }
+        return resp;
+    }
     public void MostrarSemestres(){
         NodoSemestres actual = new NodoSemestres();
         actual=primero;
@@ -55,6 +72,21 @@ public class ListaDoble {
             actual=actual.siguiente;
         }
         
+    }
+    
+    public boolean getEstado( int car){
+        NodoSemestres actual = new NodoSemestres();
+        actual = primero;
+        boolean encontrado = false;
+        while(actual != null){
+            if(actual.dato.getCarnet()==car){
+                encontrado = true;
+                encontrado=actual.dato.isEstado();
+                System.out.println("SEMESTRE EXISTENTE");
+            }
+            actual = actual.siguiente;
+        }
+        return encontrado;
     }
     public boolean getAsignacion(int x, int car, int c){
         NodoSemestres actual = new NodoSemestres();
@@ -70,6 +102,7 @@ public class ListaDoble {
         }
         return encontrado;
     }
+    
     public boolean BuscarSemestre(int x, int car, int c, boolean a){
         NodoSemestres actual = new NodoSemestres();
         actual = primero;
@@ -204,9 +237,11 @@ public class ListaDoble {
                 if((actual.dato.getNota()>=61)&&(actual.dato.getNota()<=100)){
                     actual.dato.setEstado(true);
                     JOptionPane.showMessageDialog(null, "EL ESTUDIANTE" + x +"HA APROBADO");
+                    MostrarSemestres();
                 }
                 else{
                     actual.dato.setEstado(false);
+                    actual.dato.setNota(n);
                     JOptionPane.showMessageDialog(null, "EL ESTUDIANTE" + x +"HA REPROBADO");
                 }
             }
