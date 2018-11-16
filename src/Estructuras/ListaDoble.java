@@ -39,6 +39,7 @@ public class ListaDoble {
                 ultimo.siguiente=nuevo;
                 nuevo.anterior=ultimo;
                 nuevo.siguiente=null;
+                ultimo=nuevo;
             }
         }
         else if(asig==true){
@@ -48,11 +49,12 @@ public class ListaDoble {
     
     public void MostrarSemestres(){
         NodoSemestres actual = new NodoSemestres();
-        actual=ultimo;
+        actual=primero;
         while(actual!=null){
             System.out.println(actual.dato);
-            actual = actual.anterior;
+            actual=actual.siguiente;
         }
+        
     }
     
     public boolean BuscarSemestre(int x, int c, boolean a){

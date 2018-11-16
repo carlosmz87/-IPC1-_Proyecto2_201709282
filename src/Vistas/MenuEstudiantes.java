@@ -149,22 +149,23 @@ public class MenuEstudiantes extends javax.swing.JFrame {
                 numero = 3;
             }
             
-            int curso = Integer.parseInt((String) jComboBox2.getSelectedItem());
-            Cursos c1 = ListaCursos.getObjetoCurso(curso);
-            int catedratico = c1.getCatedraticos();
-            boolean lab = c1.isLab();
-            int []pre = c1.getPre();
-            int post = c1.getPost();
-            int nota = 0;
-            boolean estado = false;
-            boolean asignado = false;
-            int carne = logueado.getCarne();
-            String nombre = logueado.getNombre();
+            
             try{
+                int curso = Integer.parseInt((String) jComboBox2.getSelectedItem());
+                Cursos c1 = ListaCursos.getObjetoCurso(curso);
+                int catedratico = c1.getCatedraticos();
+                boolean lab = c1.isLab();
+                int []pre = c1.getPre();
+                int post = c1.getPost();
+                int nota = 0;
+                boolean estado = false;
+                boolean asignado = false;
+                int carne = logueado.getCarne();
+                String nombre = logueado.getNombre();
                 if(ListaSemestres.BuscarSemestre(numero, curso, asignado)==false){
                     Semestres s1 = new Semestres(numero, curso, catedratico, lab, pre, post, nota, estado, carne, nombre, asignado);
                     ListaSemestres.IngresarSemestre(s1);
-                    ListaSemestres.MostrarSemestres();
+                    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "EL CURSO YA FUE ASIGNADO");
@@ -177,6 +178,7 @@ public class MenuEstudiantes extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(" NO SE MODIFICARON");
         }
+        ListaSemestres.MostrarSemestres();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
