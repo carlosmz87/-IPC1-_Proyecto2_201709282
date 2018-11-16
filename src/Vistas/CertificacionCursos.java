@@ -103,9 +103,9 @@ public static ListaDoble ListaSemestres;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        boolean est = ListaSemestres.getEstado(logueado.getCarne());
+        
         int carnet = logueado.getCarne();
-        String []resp =ListaSemestres.MostrarCursosAprobados(carnet, est);
+        String []resp =ListaSemestres.MostrarCursosAprobados(carnet);
         
         try{
             String salida="";

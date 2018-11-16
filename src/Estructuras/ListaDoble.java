@@ -46,7 +46,7 @@ public class ListaDoble {
             JOptionPane.showMessageDialog(null, " EL CURSO YA FUE ASIGNADO ");
         }
     }
-    public String[] MostrarCursosAprobados(int x, boolean est){
+    public String[] MostrarCursosAprobados(int x){
         NodoSemestres actual = new NodoSemestres();
         actual=primero;
         String resp[]=new String[100];
@@ -64,6 +64,26 @@ public class ListaDoble {
         }
         return resp;
     }
+    
+    public String[] MostrarCursosAsignados(int num, int x){
+        NodoSemestres actual = new NodoSemestres();
+        actual=primero;
+        String resp[]=new String[100];
+        int i=0;
+        while(actual!=null){
+            if((actual.dato.getNumero()==num)&&(actual.dato.getCarnet()==x)&&(actual.dato.isAsignado()==true)){
+                String sem = String.valueOf(actual.dato.getNumero());
+                String car=String.valueOf(actual.dato.getCarnet());
+                String c=String.valueOf(actual.dato.getCurso());
+                String nom = actual.dato.getNombre();
+                resp[i] = "EL ESTUDIANTE " + car + " " + nom + " SE HA ASIGNADO EL CURSO: "+ c + " EN EL SEMESTRE: " +sem; 
+                i++;
+            }
+            actual=actual.siguiente;
+        }
+        return resp;
+    }
+    
     public void MostrarSemestres(){
         NodoSemestres actual = new NodoSemestres();
         actual=primero;
@@ -236,13 +256,13 @@ public class ListaDoble {
                 actual.dato.setNota(n);
                 if((actual.dato.getNota()>=61)&&(actual.dato.getNota()<=100)){
                     actual.dato.setEstado(true);
-                    JOptionPane.showMessageDialog(null, "EL ESTUDIANTE" + x +"HA APROBADO");
+                    JOptionPane.showMessageDialog(null, "EL ESTUDIANTE " + x +" HA APROBADO");
                     MostrarSemestres();
                 }
                 else{
                     actual.dato.setEstado(false);
                     actual.dato.setNota(n);
-                    JOptionPane.showMessageDialog(null, "EL ESTUDIANTE" + x +"HA REPROBADO");
+                    JOptionPane.showMessageDialog(null, "EL ESTUDIANTE " + x +" HA REPROBADO");
                 }
             }
             actual = actual.siguiente;
