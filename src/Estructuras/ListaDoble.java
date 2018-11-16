@@ -56,7 +56,20 @@ public class ListaDoble {
         }
         
     }
-    
+    public boolean getAsignacion(int x, int c){
+        NodoSemestres actual = new NodoSemestres();
+        actual = primero;
+        boolean encontrado = false;
+        while(actual != null){
+            if((actual.dato.getNumero()== x)&&(actual.dato.getCurso()==c)){
+                encontrado = true;
+                encontrado=actual.dato.isAsignado();
+                System.out.println("SEMESTRE EXISTENTE");
+            }
+            actual = actual.siguiente;
+        }
+        return encontrado;
+    }
     public boolean BuscarSemestre(int x, int c, boolean a){
         NodoSemestres actual = new NodoSemestres();
         actual = primero;

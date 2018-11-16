@@ -159,7 +159,7 @@ public class MenuEstudiantes extends javax.swing.JFrame {
                 int post = c1.getPost();
                 int nota = 0;
                 boolean estado = false;
-                boolean asignado = false;
+                boolean asignado = ListaSemestres.getAsignacion(numero, curso);
                 int carne = logueado.getCarne();
                 String nombre = logueado.getNombre();
                 if(ListaSemestres.BuscarSemestre(numero, curso, asignado)==false){
