@@ -25,9 +25,7 @@ public class MenuEstudiantes extends javax.swing.JFrame {
     public static ListaCircularSimple ListaCursos=Driver.ListaCursos;
     public static ListaDoble ListaSemestres=Driver.ListaSemestres;
     int[] Listado;
-    
     String[] ListadoCursos;
-    
     
     
     public static Estudiantes logueado;
@@ -233,6 +231,9 @@ public class MenuEstudiantes extends javax.swing.JFrame {
         // TODO add your handling code here:
             
         try{
+            String [] resp=null;
+            
+            String salida="";
             int numero=0;
             if(jComboBox1.getSelectedIndex()==0){
                 numero = 1;
@@ -245,11 +246,11 @@ public class MenuEstudiantes extends javax.swing.JFrame {
             }
            int carnet = logueado.getCarne();
            
-           String []resp =ListaSemestres.MostrarCursosAsignados(carnet, numero);
+           resp =ListaSemestres.MostrarCursosAsignados(carnet, numero);
 
-            String salida="";
+            
             for(int i=0; i<100; i++){
-               System.out.println(resp[i]);
+               
                salida =salida+resp[i]+ "\n";
 
             }

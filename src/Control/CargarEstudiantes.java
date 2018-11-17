@@ -37,7 +37,8 @@ public class CargarEstudiantes {
             Buffer = new BufferedReader(Lector);
             String lec ="";
             String auxiliar ="";
-            
+            int contrasena;
+            int pw;
             while(true){
                 auxiliar=Buffer.readLine();
                 if(auxiliar!=null){
@@ -51,8 +52,10 @@ public class CargarEstudiantes {
                     String correo = fila[3];
                     String direccion = fila[4];
                     int creditos = Integer.parseInt(fila[5]);
-                    int contrasena = 1234;
-                    Estudiantes estudiante1 = new Estudiantes(carne,dpi,creditos,contrasena,nombre,correo,direccion);
+                    contrasena = (int)(Math.floor(Math.random()*999));
+                    String passw = carne+String.valueOf(contrasena);
+                    pw = Integer.parseInt(passw);
+                    Estudiantes estudiante1 = new Estudiantes(carne,dpi,creditos,pw,nombre,correo,direccion);
                     
                     //INSTANCIAMOS UN ARREGLO DE TIPO ESTUDIANTES PARA ALMACENAR LOS ESTUDIANTES
                     estudiante[contarFilas]=estudiante1;

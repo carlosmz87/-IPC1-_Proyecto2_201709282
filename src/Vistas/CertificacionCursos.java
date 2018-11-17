@@ -110,7 +110,7 @@ public static ListaDoble ListaSemestres;
         try{
             String salida="";
             for(int i=0; i<100; i++){
-               System.out.println(resp[i]);
+               
                salida =salida+resp[i]+ "\n";
                
             }
